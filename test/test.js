@@ -26,6 +26,13 @@ describe('Test typeOf(), someTypeOf(), everyTypeOf()', () => {
     expect(someTypeOf).to.throw(TypeError, errMsg);
   });
 
+  it('Expect to throw the TypeError if argument is empty object', () => {
+    const errMsg = 'Argument must be of "object" type, with signature { type: variable }';
+    expect(typeOf({})).to.throw(TypeError, errMsg);
+    expect(everyTypeOf({})).to.throw(TypeError, errMsg);
+    expect(someTypeOf({})).to.throw(TypeError, errMsg);
+  });
+
   it('typeOf should return true', () => {
     expect(typeOf({ string: 'str' })).to.be.true;
   });
@@ -41,12 +48,14 @@ describe('Test typeOf(), someTypeOf(), everyTypeOf()', () => {
   it('typeOf should return false', () => {
     expect(typeOf({ function: 'str' })).to.be.false;
   });
+
   it('typeOf should return false', () => {
     expect(typeOf({
       function: 'str',
       string: 'str'
    })).to.be.false;
   });
+
   it('everyTypeOf should return false', () => {
     expect(everyTypeOf({
       function: 'str',
@@ -54,6 +63,7 @@ describe('Test typeOf(), someTypeOf(), everyTypeOf()', () => {
       object: {}
    })).to.be.false;
   });
+
   it('everyTypeOf should return true', () => {
     expect(everyTypeOf({
       function: x => x,
@@ -75,6 +85,7 @@ describe('Test typeOf(), someTypeOf(), everyTypeOf()', () => {
       object: {}
    })).to.be.true;
   });
+  
   it('someTypeOf should return true', () => {
     expect(someTypeOf({
       function: 'str',

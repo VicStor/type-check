@@ -1,15 +1,18 @@
 #'type-check' module provides following functions for easy type checks
----
 
 - typeOf(typeObj)
 - someTypeOf(typeObj)
 - everyTypeOf(typeObj)
 
+Function type signature
+(typeOf, someTypeOf, everyTypeOf):: Object -> Boolean
+
 all these functions accept only argument with following signature
-typeObj = {
+```js
+const typeObj = {
   type: variable
 }
-
+```
 These functions use standard JS "typeof" function under the hood so use
 "undefined", "boolean", "number", "string", "symbol", "function", "object" keys in argument object.
 Read [MDN typeof](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof) for details.
@@ -31,7 +34,7 @@ const typeObj = {
 
 ###typeOf
 ---
-typeOf checks only first key-value pair in passing object and ignores any further checks. You'll see warning message in console if you pass object with more then one key-value pair.
+typeOf checks only first key-value pair in passing object and ignores any further checks. You'll see warning message in console if you pass object with more then one key-value pair, still it executes without errors.
 
 ###someTypeOf
 ---
