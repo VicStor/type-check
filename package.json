@@ -1,12 +1,14 @@
 {
   "name": "type-check-easy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check types easy",
   "main": "index.js",
   "scripts": {
     "test": "mocha -w"
   },
-  "keywords": ["type"],
+  "keywords": [
+    "type"
+  ],
   "author": "Victor Strorozhenko",
   "license": "MIT",
   "repository": {
