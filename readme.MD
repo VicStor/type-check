@@ -15,19 +15,40 @@ The functions accept only argument with following signature
 const typeObj = {
   type: variable
 }
+// OR
+const typeObj = {
+  type: [variables]
+}
 ```
+###Important note
+Keep in mind that object should not contain duplicate keys
+```js
+const typeObj = {
+  string: ['str1', 12],
+  string: ['str2', 'str3']
+}
+```
+in this case second string key completely overwrite first string key so the function will receive
+```js
+// {
+//   string: ['str2', 'str3']
+// }
+// so
+everyTypeOf(typeObj) // => true
+```
+
 These functions use standard JS "typeof" function under the hood so use keys
 "undefined", "boolean", "number", "string", "symbol", "function", "object" in argument object.
 Read [MDN typeof](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof) for details.
 It also returns true for "promise" check if the value object has .then() method.
 ```js
 const typeObj = {
-  function: (x) => x,
+  number: [6, 8, 9],
+  function: x => x,
   object: {},
   object: null,
   string: 'any string',
   boolean: true,
-  number: 6,
   symbol: Symbol(),
   undefined: undefinedVariable,
   promise: promiseObject
@@ -37,7 +58,7 @@ const typeObj = {
 
 ###typeOf
 ---
-typeOf checks only first key-value pair in passing object and ignores any further checks. You'll see warning message in console if you pass object with more then one key-value pair, still it executes without errors.
+typeOf checks only first key-value pair in passing object and ignores any further checks. You'll see warning message in console if you pass object with more then one key-value pair or array of values, still it executes without errors.
 
 ###someTypeOf
 ---
@@ -50,6 +71,13 @@ someTypeOf({
   function: x => x
 }); // => returns true
 // as it received correct function type in last property
+
+someTypeOf({
+  string: [9, 'string'],
+  boolean: 'string',
+  function: 1
+}); // => returns true
+// as it received correct string type in one of first properties
 ```
 
 ###everyTypeOf
@@ -71,19 +99,21 @@ const prom = (x) => new Promise((res, rej) => {
 
 const targetObject = {
   name: 'Object name',
+  description: 'Object description',
   count: 9,
   method1: (x) => x,
   method2: prom('xxx')
 }
 
 if(everyTypeOf({
-      string: targetObject.name,
+      string: [targetObject.name, targetObject.description],
       number: targetObject.count,
       function: targetObject.method1,
       promise: targetObject.method2
     })
   ) {
   // targetObject.name
+  // targetObject.description
   // targetObject.method1()
   // targetObject.method2.then()
 }
