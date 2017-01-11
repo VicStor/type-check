@@ -16,7 +16,7 @@ const targetObject = {
   description: 'Object description',
   count: 9,
   method1: x => x,
-  method2: prom('xxx')
+  promise: prom('xxx')
 }
 
 describe('Test everyTypeOf()', () => {
@@ -66,7 +66,7 @@ describe('Test everyTypeOf()', () => {
       string: [targetObject.name, targetObject.description],
       number: targetObject.count,
       function: targetObject.method1,
-      promise: targetObject.method2
+      promise: targetObject.promise
     })).to.be.true;
   });
 });
