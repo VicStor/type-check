@@ -1,5 +1,5 @@
 {
-  "name": "type-check",
+  "name": "type-check-easy",
   "version": "1.0.0",
   "description": "Check types easy",
   "main": "index.js",
@@ -9,6 +9,10 @@
   "keywords": ["type"],
   "author": "Victor Strorozhenko",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VicStor/type-check"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
