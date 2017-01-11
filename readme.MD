@@ -44,9 +44,8 @@ It also returns true for "promise" check if the value object has .then() method.
 ```js
 const typeObj = {
   number: [6, 8, 9],
-  function: x => x,
-  object: {},
-  object: null,
+  function: [x => x, y => y],
+  object: [{}, null],
   string: 'any string',
   boolean: true,
   symbol: Symbol(),
@@ -101,20 +100,20 @@ const targetObject = {
   name: 'Object name',
   description: 'Object description',
   count: 9,
-  method1: (x) => x,
-  method2: prom('xxx')
+  fn: x => x,
+  promise: prom('xxx')
 }
 
 if(everyTypeOf({
       string: [targetObject.name, targetObject.description],
       number: targetObject.count,
-      function: targetObject.method1,
-      promise: targetObject.method2
+      function: targetObject.fn,
+      promise: targetObject.promise
     })
   ) {
   // targetObject.name
   // targetObject.description
-  // targetObject.method1()
-  // targetObject.method2.then()
+  // targetObject.fn()
+  // targetObject.promise.then()
 }
 ```
