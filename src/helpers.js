@@ -9,6 +9,20 @@ function typeCheck(type) {
   }
 }
 
+function makeFunctionChecker(checker) {
+  return function (typeObj) {
+    const types = argValidation(typeObj);
+
+    return types[checker]((type) => {
+      const checkVar = typeCheck(type);
+      if(Array.isArray(typeObj[type])) {
+        return typeObj[type][checker](checkVar);
+      }
+      return checkVar(typeObj[type]);
+    });
+  }
+}
+
 function checkType(type, variable) {
   if(type === 'promise') {
     return typeof variable.then === 'function';
@@ -43,5 +57,6 @@ module.exports = {
   REGISTERED_TYPES,
   TYPE_ERROR,
   ARG_TYPE_ERR,
-  TYPE_OF_WARN
+  TYPE_OF_WARN,
+  makeFunctionChecker
 }

@@ -69,4 +69,11 @@ describe('Test everyTypeOf()', () => {
       promise: targetObject.promise
     })).to.be.true;
   });
+  
+  it('everyTypeOf should return true', () => {
+    let v1, v2, v3;
+    expect(everyTypeOf({
+      undefined: [v1, v2, v3]
+    })).to.be.true;
+  });
 });

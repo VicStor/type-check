@@ -37,9 +37,10 @@ in this case second string key completely overwrite first string key so the func
 everyTypeOf(typeObj) // => true
 ```
 
-These functions use standard JS "typeof" function under the hood so use keys
+All the functions use standard JS "typeof" function under the hood so use keys
 "undefined", "boolean", "number", "string", "symbol", "function", "object" in argument object.
 Read [MDN typeof](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof) for details.
+
 It also returns true for "promise" check if the value object has .then() method.
 ```js
 const typeObj = {
