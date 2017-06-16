@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const { typeOf } = require('../src/main');
-const { ARG_TYPE_ERR } = require('../src/helpers');
+const { typeOf } = require('../lib/main');
+const { ARG_TYPE_ERR } = require('../lib/helpers');
 
 const prom = (x) => new Promise((res, rej) => {
   try {

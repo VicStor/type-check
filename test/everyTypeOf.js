@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const { everyTypeOf } = require('../src/main');
-const { ARG_TYPE_ERR } = require('../src/helpers');
+const { everyTypeOf } = require('../lib/main');
+const { ARG_TYPE_ERR } = require('../lib/helpers');
 
 const prom = (x) => new Promise((res, rej) => {
   try {
@@ -69,7 +69,7 @@ describe('Test everyTypeOf()', () => {
       promise: targetObject.promise
     })).to.be.true;
   });
-  
+
   it('everyTypeOf should return true', () => {
     let v1, v2, v3;
     expect(everyTypeOf({

@@ -1,4 +1,4 @@
-#'type-check' module provides following functions for easy type checks
+#'type-check-easy' module provides following functions for easy type checks
 
 - typeOf(typeObj)
 - someTypeOf(typeObj)

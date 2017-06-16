@@ -1,1 +1,183 @@
-!function(e){function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var t={};n.m=e,n.c=t,n.i=function(e){return e},n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},n.p="",n(n.s=1)}([function(e,n,t){"use strict";function r(e){return function(n){return i(e,n)}}function o(e){return function(n){return u(n)[e](function(t){var o=r(t);return Array.isArray(n[t])?n[t][e](o):o(n[t])})}}function i(e,n){return"promise"===e?"function"==typeof n.then:(void 0===n?"undefined":c(n))===e}function u(e){if("object"!==(void 0===e?"undefined":c(e)))throw f;var n="",t=Object.keys(e);if(0===t.length)throw f;if(t.forEach(function(e){~p.indexOf(e)||(n+=' "'+e+'"')}),""!==n)throw new TypeError(y+n);return t}var c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},f=new TypeError("Expect argument to be object, with signature { type: variable } or { type: [variable] }"),y='Expected keys to be one of registered types\n "undefined", "boolean", "number", "string", "symbol", "function", "object", "promise"\n but recieved',p=["undefined","boolean","number","string","symbol","function","object","promise"];e.exports={argValidation:u,typeCheck:r,REGISTERED_TYPES:p,TYPE_ERROR:y,ARG_TYPE_ERR:f,TYPE_OF_WARN:"Function typeOf() checks the type of only first property in object\nuse everyType() or someType() for multiple checks",makeFunctionChecker:o}},function(e,n,t){"use strict";function r(e){var n=c(e);return(n.length>1||Array.isArray(e[n[0]]))&&console.warn(y),Array.isArray(e[n[0]])?f(n[0])(e[n[0]][0]):f(n[0])(e[n[0]])}function o(e){return p("some")(e)}function i(e){return p("every")(e)}var u=t(0),c=u.argValidation,f=u.typeCheck,y=(u.REGISTERED_TYPES,u.TYPE_ERROR,u.ARG_TYPE_ERR,u.TYPE_OF_WARN),p=u.makeFunctionChecker;e.exports={typeOf:r,everyTypeOf:i,someTypeOf:o}}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var ARG_TYPE_ERR = new TypeError('Expect argument to be object, with signature { type: variable } or { type: [variable] }');
+var TYPE_ERROR = 'Expected keys to be one of registered types\n "undefined", "boolean", "number", "string", "symbol", "function", "object", "promise"\n but recieved';
+var TYPE_OF_WARN = 'Function typeOf() checks the type of only first property in object\nuse everyType() or someType() for multiple checks';
+var REGISTERED_TYPES = ['undefined', 'boolean', 'number', 'string', 'symbol', 'function', 'object', 'promise'];
+
+function typeCheck(type) {
+  return function (variable) {
+    return checkType(type, variable);
+  };
+}
+
+function makeFunctionChecker(checker) {
+  return function (typeObj) {
+    var types = argValidation(typeObj);
+
+    return types[checker](function (type) {
+      var checkVar = typeCheck(type);
+      if (Array.isArray(typeObj[type])) {
+        return typeObj[type][checker](checkVar);
+      }
+      return checkVar(typeObj[type]);
+    });
+  };
+}
+
+function checkType(type, variable) {
+  if (type === 'promise') {
+    return typeof variable.then === 'function';
+  }
+  return (typeof variable === 'undefined' ? 'undefined' : _typeof(variable)) === type;
+}
+
+function argValidation(typeObj) {
+  if ((typeof typeObj === 'undefined' ? 'undefined' : _typeof(typeObj)) !== 'object') {
+    throw ARG_TYPE_ERR;
+  }
+  var errMsg = '';
+  var types = Object.keys(typeObj);
+  if (types.length === 0) {
+    throw ARG_TYPE_ERR;
+  }
+  types.forEach(function (type) {
+    if (!~REGISTERED_TYPES.indexOf(type)) {
+      errMsg += ' "' + type + '"';
+    }
+  });
+  if (errMsg !== '') {
+    throw new TypeError(TYPE_ERROR + errMsg);
+  }
+  return types;
+}
+
+module.exports = {
+  argValidation: argValidation,
+  typeCheck: typeCheck,
+  REGISTERED_TYPES: REGISTERED_TYPES,
+  TYPE_ERROR: TYPE_ERROR,
+  ARG_TYPE_ERR: ARG_TYPE_ERR,
+  TYPE_OF_WARN: TYPE_OF_WARN,
+  makeFunctionChecker: makeFunctionChecker
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(0),
+    argValidation = _require.argValidation,
+    typeCheck = _require.typeCheck,
+    REGISTERED_TYPES = _require.REGISTERED_TYPES,
+    TYPE_ERROR = _require.TYPE_ERROR,
+    ARG_TYPE_ERR = _require.ARG_TYPE_ERR,
+    TYPE_OF_WARN = _require.TYPE_OF_WARN,
+    makeFunctionChecker = _require.makeFunctionChecker;
+
+function typeOf(typeObj) {
+  var types = argValidation(typeObj);
+
+  if (types.length > 1 || Array.isArray(typeObj[types[0]])) {
+    console.warn(TYPE_OF_WARN);
+  }
+  if (Array.isArray(typeObj[types[0]])) {
+    return typeCheck(types[0])(typeObj[types[0]][0]);
+  }
+  return typeCheck(types[0])(typeObj[types[0]]);
+}
+
+function someTypeOf(typeObj) {
+  return makeFunctionChecker('some')(typeObj);
+}
+
+function everyTypeOf(typeObj) {
+  return makeFunctionChecker('every')(typeObj);
+}
+
+module.exports = {
+  typeOf: typeOf,
+  everyTypeOf: everyTypeOf,
+  someTypeOf: someTypeOf
+};
+
+/***/ })
+/******/ ]);
